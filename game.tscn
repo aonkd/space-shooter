@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7l7gdbhey1dl"]
+[gd_scene load_steps=6 format=3 uid="uid://c7l7gdbhey1dl"]
 
-[ext_resource type="PackedScene" uid="uid://qre310kyj15u" path="res://player.tscn" id="2_utvqe"]
+[ext_resource type="PackedScene" uid="uid://qre310kyj15u" path="res://player/player.tscn" id="2_utvqe"]
 [ext_resource type="Texture2D" uid="uid://belx2oq3mfgbd" path="res://assets/bg5.jpg" id="3_3yna0"]
 [ext_resource type="PackedScene" uid="uid://me71u4m8gv0d" path="res://asteroid.tscn" id="3_xu6t3"]
+[ext_resource type="PackedScene" uid="uid://br8evg1bgel2c" path="res://enemy/enemy.tscn" id="4_b3mcf"]
+[ext_resource type="Script" path="res://player/player_container.gd" id="4_dhj4f"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,7 +13,15 @@ position = Vector2(512, 300)
 scale = Vector2(1.05679, 0.96087)
 texture = ExtResource("3_3yna0")
 
-[node name="player" parent="." instance=ExtResource("2_utvqe")]
+[node name="player_container" type="Node2D" parent="."]
+script = ExtResource("4_dhj4f")
+
+[node name="player" parent="player_container" instance=ExtResource("2_utvqe")]
+
+[node name="enemy_container" type="Node2D" parent="."]
+
+[node name="enemy" parent="enemy_container" instance=ExtResource("4_b3mcf")]
+position = Vector2(300, 200)
 
 [node name="asteroid_container" type="Node2D" parent="."]
 

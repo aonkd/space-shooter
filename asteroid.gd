@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 var initial_speed = 30.0
+var health = 1
+
 
 func _ready():
 	velocity = Vector2(0,randf()*initial_speed).rotated(randf()*2*PI)
@@ -11,3 +13,8 @@ func _physics_process(_delta):
 	position.y = wrapf(position.y, 0, 648)
 
 	move_and_slide()
+
+func damage(d):
+	health -= d
+	if health <= 0:
+		queue_free()
