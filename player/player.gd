@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var speed = 3
-var rotate_speed = 0.08
-var max_speed = 200
+var speed = 15
+var rotate_speed = 0.06
+var max_speed = 300
 var nose = Vector2(0,-60)
 var Bullet = load("res://player/bullet.tscn")
 var health = 10
@@ -25,8 +25,8 @@ func _physics_process(_delta):
 	velocity += get_input()*speed
 	velocity = velocity.normalized() * clamp(velocity.length(), 0, max_speed)
 	
-	position.x = wrapf(position.x, 0.0, 1152.0)
-	position.y = wrapf(position.y, 0.0, 648.0)
+	position.x = wrapf(position.x, 0.0, Global.VP.x)
+	position.y = wrapf(position.y, 0.0, Global.VP.y)
 	velocity = velocity.normalized() * clamp(velocity.length(), 0, max_speed)
 	
 	move_and_slide()
@@ -42,6 +42,7 @@ func _physics_process(_delta):
 func damage(d):
 	health -= d
 	if health <= 0:
+		Global.update_lives(-1)
 		Effects = get_node_or_null("/root/Game/effects")
 		if Effects != null:
 			var explosion = Explosion.instantiate()
@@ -55,3 +56,4 @@ func damage(d):
 func _on_area_2d_body_entered(body):
 	if body.name != "player":
 		damage(10)
+

@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7l7gdbhey1dl"]
+[gd_scene load_steps=9 format=3 uid="uid://c7l7gdbhey1dl"]
 
 [ext_resource type="PackedScene" uid="uid://qre310kyj15u" path="res://player/player.tscn" id="2_utvqe"]
 [ext_resource type="Texture2D" uid="uid://belx2oq3mfgbd" path="res://assets/bg5.jpg" id="3_3yna0"]
 [ext_resource type="PackedScene" uid="uid://me71u4m8gv0d" path="res://asteroid.tscn" id="3_xu6t3"]
 [ext_resource type="PackedScene" uid="uid://br8evg1bgel2c" path="res://enemy/enemy.tscn" id="4_b3mcf"]
 [ext_resource type="Script" path="res://player/player_container.gd" id="4_dhj4f"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="6_pwq87"]
+[ext_resource type="FontFile" uid="uid://duqsa1r02fmo4" path="res://assets/Hyperspace Bold.otf" id="7_hhhn6"]
+[ext_resource type="Script" path="res://ui/menu.gd" id="8_wbt2i"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="background" type="Sprite2D" parent="."]
 position = Vector2(512, 300)
 scale = Vector2(1.05679, 0.96087)
 texture = ExtResource("3_3yna0")
@@ -32,3 +35,102 @@ position = Vector2(100, 100)
 position = Vector2(900, 600)
 
 [node name="effects" type="Node2D" parent="."]
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="hud" type="Control" parent="ui"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("6_pwq87")
+
+[node name="score" type="Label" parent="ui/hud"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_hhhn6")
+vertical_alignment = 1
+
+[node name="time" type="Label" parent="ui/hud"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.36
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_hhhn6")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="indicator_container" type="Control" parent="ui/hud"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="ui/hud"]
+autostart = true
+
+[node name="menu" type="Control" parent="ui"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_wbt2i")
+
+[node name="ColorRect" type="ColorRect" parent="ui/menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = 122.0
+offset_right = 989.0
+offset_bottom = 482.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.494118)
+
+[node name="pause menu" type="Label" parent="ui/menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 137.0
+offset_right = 654.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_hhhn6")
+theme_override_font_sizes/font_size = 29
+text = "pause menu"
+
+[node name="restart" type="Button" parent="ui/menu"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 242.0
+offset_right = 665.0
+offset_bottom = 286.0
+theme_override_fonts/font = ExtResource("7_hhhn6")
+text = "RESTART"
+
+[node name="quit" type="Button" parent="ui/menu"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 331.0
+offset_right = 665.0
+offset_bottom = 375.0
+theme_override_fonts/font = ExtResource("7_hhhn6")
+text = "QUIT"
+
+[connection signal="timeout" from="ui/hud/Timer" to="ui/hud" method="_on_timer_timeout"]
+[connection signal="pressed" from="ui/menu/restart" to="ui/menu" method="_on_restart_pressed"]
+[connection signal="pressed" from="ui/menu/quit" to="ui/menu" method="_on_quit_pressed"]
