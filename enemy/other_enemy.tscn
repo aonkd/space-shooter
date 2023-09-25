@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp7kw3dmlw02y"]
 
 [ext_resource type="Script" path="res://enemy/other_enemy.gd" id="1_hq3we"]
-[ext_resource type="Texture2D" uid="uid://baeliuy85lgmo" path="res://assets/a_small_2.png" id="2_ky5ay"]
+[ext_resource type="Texture2D" uid="uid://6teli63u82po" path="res://assets/a_big_13.png" id="2_fkyg7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbcjw"]
 radius = 45.0
@@ -11,8 +11,8 @@ scale = Vector2(0.6, 0.6)
 script = ExtResource("1_hq3we")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_ky5ay")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fkyg7")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -24,8 +24,8 @@ autostart = true
 shape = SubResource("CircleShape2D_xbcjw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(0.75, 0.75)
-polygon = PackedVector2Array(15, -46.8, 15, -45.6, 37, -35.6, 37, -34.5, 42, -30.5, 42, -27.3, 46, -20.3, 46, -14, 48.2, -1, 46.4, -1, 43.4, 2, 33.2, 2, 32, 2.6, 32, 3.4, 21.4, 14, 19.6, 14, 18.6, 16, 16.3, 16, 13, 18.5, 13, 21.1, 7.8, 40, 6.5, 40, 1.6, 48, -3, 48, -3, 46.4, -6, 43.4, -6, 41, -8, 39.4, -8, 37, -10, 35.4, -10, 29.3, -12, 26.3, -12, 21, -12.7, 19, -13.6, 19, -14.6, 17, -16.4, 17, -19.4, 14, -22, 14, -22, 12.4, -31.4, 3, -33.1, 3, -46, 0.800003, -46, -0.400002, -48, -1.4, -48, -8, -46.9, -8, -45.9, -21, -44.8, -21, -41.7, -31, -40.5, -31, -36.5, -36, -34.4, -36, -29.4, -40, -27.3, -40, -14.3, -47, -11.3, -47, -8.3, -49, -3, -49, -3, -50.2)
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(37, -74, 37, -72.5, 44, -70.5, 44, -68.9, 83, -31.9, 83, -27.8, 80.4, -13.6, 88.1, -2, 88.7, -2, 100, 7.4, 100, 27, 97, 31, 94.3, 31, 82, 36.3, 78.3, 45, 76.7, 45, 74, 47, 74, 48.2, 69.7, 71, 67.7, 71, 61, 76.9, 61, 79, 62.3, 89, 60.2, 89, 57.2, 95, 43, 95, 43, 98.5, 42.2, 100, 26, 100, 26, 98.5, 21, 89.5, 21, 65, -3, 77.3, -3, 74.3, -21, 65.3, -21, 82.3, -25.9, 100, -42, 100, -42.7, 95, -58, 95, -58, 92.7, -62, 87.7, -62, 75.7, -70, 70, -70, 62, -75, 53.5, -75, 48, -81.3, 37, -83.5, 37, -100, 27.3, -100, 8, -80, -12.8, -80, -16.5, -84, -24.5, -84, -28.3, -82.4, -33, -80.8, -33, -55.9, -59, -53.9, -59, -38.8, -73, -35, -73, -17, -73.9, -17, -75)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

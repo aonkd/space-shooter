@@ -4,7 +4,7 @@ var y_positions = [100,150,200,500,550]
 var initial_position = Vector2.ZERO
 var direction = Vector2(1.5,0)
 var wobble = 30.0
-var health = 2
+var health = 3
 var Bullet = load("res://enemy/enemy_bullet.tscn")
 var Explosion = load("res://effects/explosion.tscn")
 var Effects = null
@@ -28,7 +28,7 @@ func _ready():
 func damage(d):
 	health -= d
 	if health <= 0:
-		Global.update_score(500)
+		Global.update_score(750)
 		queue_free()
 
 func _on_area_2d_body_entered(_body):
