@@ -22,7 +22,7 @@ func _on_timer_timeout():
 
 func _ready():
 	initial_position.x = -100
-	initial_position.y = 100
+	initial_position.y = 500
 	position = initial_position
 
 func damage(d):
@@ -37,9 +37,6 @@ func _on_area_2d_body_entered(_body):
 
 func _physics_process(_delta):
 	position += direction
-	position.y = initial_position.y + sin(position.x/10)*wobble
+	position.y = initial_position.y + sin(position.x/20)*wobble
 	if position.x > Global.VP.x:
 		queue_free()
-
-
-
