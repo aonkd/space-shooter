@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7l7gdbhey1dl"]
+[gd_scene load_steps=11 format=3 uid="uid://c7l7gdbhey1dl"]
 
 [ext_resource type="PackedScene" uid="uid://qre310kyj15u" path="res://player/player.tscn" id="2_utvqe"]
 [ext_resource type="Texture2D" uid="uid://belx2oq3mfgbd" path="res://assets/bg5.jpg" id="3_3yna0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://ui/hud.gd" id="6_pwq87"]
 [ext_resource type="FontFile" uid="uid://duqsa1r02fmo4" path="res://assets/Hyperspace Bold.otf" id="7_hhhn6"]
 [ext_resource type="Script" path="res://ui/menu.gd" id="8_wbt2i"]
+[ext_resource type="AudioStream" uid="uid://426ghvlbmjog" path="res://assets/2dspaceshooter.mp3" id="10_3pfql"]
 
 [node name="Game" type="Node2D"]
 
@@ -133,6 +134,10 @@ offset_right = 665.0
 offset_bottom = 375.0
 theme_override_fonts/font = ExtResource("7_hhhn6")
 text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3pfql")
+autoplay = true
 
 [connection signal="timeout" from="ui/hud/Timer" to="ui/hud" method="_on_timer_timeout"]
 [connection signal="pressed" from="ui/menu/restart" to="ui/menu" method="_on_restart_pressed"]
