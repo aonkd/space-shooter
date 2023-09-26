@@ -1,10 +1,11 @@
 # Project Name
-Context and date
-Description
+Project 2 for BL-MSCH-C220, September 26th, 2023
+2D Arcade Space Shooter
 
 ## Implementation
 
-All aspects of the game were created in Godot 4.0 using open source assets.
+Music created by me in Ableton Live 11 Standard.
+All other aspects of the game were created in Godot 4.0 using open source assets.
 
 ## What Makes this a Game?
 
