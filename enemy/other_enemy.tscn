@@ -15,7 +15,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_fkyg7")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.5
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -8,11 +8,16 @@ var health = 2
 var Bullet = load("res://enemy/enemy_bullet.tscn")
 var Explosion = load("res://effects/explosion.tscn")
 var Effects = null
+var Bullet_sound = null
+
 
 func _on_timer_timeout():
 	var Player = get_node_or_null("/root/Game/player_container/player")
 	Effects = get_node_or_null("/root/Game/effects")
 	if Player != null and Effects != null:
+		Bullet_sound = get_node_or_null("/root/Game/enemy_bullet_sound")
+		if Bullet_sound != null:
+			Bullet_sound.play()
 		var bullet = Bullet.instantiate()
 		var d = global_position.angle_to_point(Player.global_position) + PI/2
 		bullet.rotation = d

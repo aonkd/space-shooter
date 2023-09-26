@@ -8,6 +8,7 @@ var Bullet = load("res://player/bullet.tscn")
 var health = 10
 var Explosion = load("res://effects/explosion.tscn")
 var Effects = null
+var Bullet_sound = null
 
 func get_input():
 	var to_return = Vector2.ZERO
@@ -34,6 +35,9 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		Effects = get_node_or_null("/root/Game/effects")
 		if Effects != null:
+			Bullet_sound = get_node_or_null("/root/Game/bullet_sound")
+			if Bullet_sound != null:
+				Bullet_sound.play()
 			var bullet = Bullet.instantiate()
 			bullet.rotation = rotation
 			bullet.global_position = global_position + nose.rotated(rotation)
